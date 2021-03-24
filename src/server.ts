@@ -1,4 +1,8 @@
+
+import 'reflect-metadata';
 import express from 'express';
+import "./database";
+import { router } from './routes';
 
 const app = express();
 
@@ -7,16 +11,8 @@ const app = express();
 // PUT - Alterar
 // DELETE - Deletar
 // PATCH - Alteração Especifica
-
-app.get("/", (resquest, response) => {
-    // return response.send("Hello World NLW4");
-    return response.json({message: "Hello World NLW4"});
-})
-
-
-app.post("/", (resquest, response) => {
-    return response.json({message: "Dados salvos com sucesso!"})
-})
+app.use(express.json());
+app.use(router);
 
 app.listen(3333, () => console.log('listening'))
 
